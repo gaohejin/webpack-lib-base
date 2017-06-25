@@ -117,12 +117,12 @@ module.exports = exports['default'];
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(undefined);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".parentIndex {\r\n  width: 100px;\r\n  height: 100px;\r\n  border-radius: 100%;\r\n  background-color: aqua;\r\n}", ""]);
+exports.push([module.i, ".parentIndex {\n  width: 100px;\n  height: 100px;\n  border-radius: 100%;\n  background-color: aqua; }\n", ""]);
 
 // exports
 
@@ -230,8 +230,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!./index.css", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!./index.css");
+		module.hot.accept("!!../../node_modules/css-loader/index.js??ref--7-1!../../node_modules/sass-loader/lib/loader.js??ref--7-2!./index.scss", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js??ref--7-1!../../node_modules/sass-loader/lib/loader.js??ref--7-2!./index.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});

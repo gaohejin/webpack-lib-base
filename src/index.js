@@ -1,4 +1,4 @@
-require('./style/index.css')
+require('./style/index.scss')
 class Test {
   constructor () {
     this.version = '2.0.0'

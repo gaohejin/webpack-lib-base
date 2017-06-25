@@ -8,7 +8,8 @@ const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
 const spinner = ora('building for production...')
 spinner.start()
-rm(path.join(config.build.distDirectory, config.build.styleDirectory), err => {
+// 删除已编译文件
+rm(path.join(config.build.distDirectory, config.build.styleDirectory, config.build.assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, function (err, stats) {
     spinner.stop()

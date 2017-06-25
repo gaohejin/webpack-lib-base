@@ -1,7 +1,6 @@
 /* global __dirname, require, module */
 const path = require('path')
 const utils = require('./utils')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const resolve = (dir) => {
   return path.join(__dirname, '..', dir)
 }
@@ -20,25 +19,6 @@ const config = {
           'eslint-loader'
         ],
         exclude: /(node_modules|bower_components)/
-      },
-      // {
-      //   test: /\.css$/,
-      //   loader:  ExtractTextPlugin.extract({
-      //     fallback: 'style-loader',
-      //     use: 'css-loader'
-      //   })
-      // },
-      {
-        test: /\.css$/,
-        loader:  "style-loader!css-loader"
-      },
-      {
-        test:  /\.scss$/,
-        loader:  "style-loader!css-loader!sass-loader"
-      },
-      {
-        test:  /\.less$/,
-        loader:  "style-loader!css-loader!less-loader"
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
