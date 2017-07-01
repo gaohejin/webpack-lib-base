@@ -6,8 +6,6 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 let devtool = false
 if (config.dev.devtoolSourceMap && typeof config.dev.devtoolSourceMap === 'string') {
   devtool = config.dev.devtoolSourceMap
@@ -17,16 +15,10 @@ if (config.dev.devtoolSourceMap && typeof config.dev.devtoolSourceMap === 'strin
   devtool = false
 }
 module.exports = merge(baseWebpackConfig, {
-  output: {
-    path: config.dev.distDirectory,
-    filename: config.dev.libraryName + '.js',
-    library: config.dev.libraryName,
-    libraryTarget: 'umd',
-    umdNamedDefine: true
-  },
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.dev.cssSourceMap
+      sourceMap: config.dev.cssSourceMap,
+      extract: true
     })
   },
   devtool: devtool,
@@ -44,22 +36,8 @@ module.exports = merge(baseWebpackConfig, {
     new FriendlyErrorsPlugin(),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/index.css')
-    }),
-    // Compress extracted CSS. We are using this plugin so that possible
-    // duplicated CSS from different components can be deduped.
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: {
-        safe: true
-      }
-    }),
-    // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../asset'),
-        to: config.build.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ])
+      filename: utils.assetsPath('css/' + config.base.libraryName + '.css'),
+      allChunks: true
+    })
   ]
 })

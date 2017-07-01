@@ -1,6 +1,8 @@
 .parentIndex {
   width: 100px;
   height: 100px;
+  display: flex;
   border-radius: 100%;
   background-color: aqua;
+  transform: rotate(30deg);
 }
